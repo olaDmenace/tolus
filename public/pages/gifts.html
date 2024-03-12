@@ -47,7 +47,7 @@
       ></div>
     </div>
     <div class="pt-8 px-7">
-      <a href="/pages/invitation">
+      <a href="/pages/invitation.html">
         <button class="flex items-center gap-3 font-openSans text-sm">
           <p><</p>
           <p class="text-black/[54%]">Back Home</p>
@@ -562,7 +562,7 @@
       callback: function (response) {
         let message = "Payment complete! Reference: " + response.reference;
         alert(message);
-        window.location.href = "/pages/successful";
+        window.location.href = "/pages/successful.html";
       },
     });
     handler.openIframe();
