@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!-- px tailwindcss -i ./src/input.css -o ./public/style.css --watch  **Use that command to watch for CSS** -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gifts || #myCupOfTea</title>
+    <link rel="stylesheet" href="../style.css" />
+    <style>
+      /* Basic styling for the alert popup */
+      .alert {
+        font-size: 16px;
+        padding: 10px 20px;
+        color: #fff;
+        background-color: #333;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body class="w-screen min-h-screen pb-10">
+    <div id="emailForm" class="fixed h-full w-screen hidden top-0 left-0">
+      <div
+        class="bg-white space-y-5 h-48 w-72 z-20 rounded-lg px-7 py-7 absolute left-[50%] translate-x-[-50%] top-[30%]"
+      >
+        <label for="email" class="space-y-3">
+          <p class="font-openSans text-sm leading-[19.07px]">
+            Please, enter email address
+          </p>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            class="border border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+          />
+        </label>
+        <button
+          class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+          onclick="payWithPaystack()"
+        >
+          Purchase
+        </button>
+      </div>
+      <div
+        class="h-screen w-screen bg-black/40 absolute content-center justify-center popUp"
+        onclick="closePopUp()"
+        id="giftForm"
+      ></div>
+    </div>
+    <div class="pt-8 px-7">
+      <a href="/pages/invitation.html">
+        <button class="flex items-center gap-3 font-openSans text-sm">
+          <p><</p>
+          <p class="text-black/[54%]">Back Home</p>
+        </button>
+      </a>
+    </div>
+    <div class="space-y-9 w-full px-7 pt-3 relative">
+      <div class="grid gap-3 justify-items-center">
+        <h2
+          class="text-center font-lora font-semibold text-2xl leading-[30.72px]"
+        >
+          Our Gift Registry
+        </h2>
+        <p class="font-openSans w-9/12 text-center">
+          Here are some of the gifts we’ll really appreciate.
+        </p>
+      </div>
+      <img
+        src="../images//rose.png"
+        alt="rosePetal"
+        class="absolute top-0 rotate-[20deg] right-0 -z-20 transform"
+      />
+      <img
+        src="../images//rose.png"
+        alt="rosePetal"
+        class="absolute top-[35%] rotate-[20deg] right-[50%] -z-20 transform"
+      />
+      <div class="space-y-8">
+        <div class="grid grid-flow-col gap-4">
+          <div class="grid h-80 content-between">
+            <img
+              src="../images/fp-850-marketing-sheet-1417x1417-1.webp"
+              alt="foodProcessor"
+              class="w-full rounded-lg"
+            />
+            <label for="foodProcessor" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Binatone Food Processor
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="foodProcessor"
+                  id="foodProcessor"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+          <div class="grid h-80 content-between">
+            <img
+              src="../images/Photoshoot/image 12-1.jpg"
+              alt="theCouple"
+              class="w-full rounded-lg"
+            />
+            <!-- <label
+              for="honeyMoon"
+              class="pb-2 grid grid-cols-2 grid-flow-col items-center gap-4"
+            >
+              <p class="font-openSans text-sm leading-[19.07px]">Honey Moon</p>
+              <input
+                type="number"
+                name="honeyMoon"
+                min="1"
+                id="honeyMoon"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="honeyMoon" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Honey Moon
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="honeyMoon"
+                  id="honeyMoon"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-flow-col gap-4">
+          <div class="h-80 grid content-between">
+            <img
+              src="../images/kenword-30_400x.webp"
+              alt="airFrier"
+              class="w-full rounded-lg"
+            />
+            <!-- <label for="airFrier" class="pb-2 flex items-center gap-2">
+              <p class="font-openSans text-sm leading-[19.07px]">Air Frier</p>
+              <input
+                type="number"
+                min="1"
+                name="airFrier"
+                id="airFrier"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="airFrier" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Kenwood Air Fryer
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="airFrier"
+                  id="airFrier"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+          <div class="h-80 content-between grid">
+            <img src="../images/wares.png" alt="wares" class="rounded-lg" />
+            <!-- <label for="turkishSet" class="pb-2 flex items-center">
+              <p class="font-openSans text-sm leading-[19.07px]">
+                Cookware Set
+              </p>
+              <input
+                type="number"
+                name="turkishSet"
+                id="turkishSet"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="turkishSet" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Radiant Cookware Set
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="turkishSet"
+                  id="turkishSet"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-flow-col grid-cols-2 gap-4">
+          <div class="h-80 content-between grid">
+            <img
+              src="../images/washinMachine.jpg"
+              alt="washinMachine"
+              class="w-full rounded-lg"
+            />
+            <!-- <label for="washinMachine" class="pb-2 flex items-center">
+              <p class="font-openSans text-sm leading-[19.07px]">
+                Washing Machine
+              </p>
+              <input
+                type="number"
+                min="1"
+                name="washinMachine"
+                id="washinMachine"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="washinMachine" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Hisense Washing Machine
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="washinMachine"
+                  id="washinMachine"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+          <div class="grid h-80 content-between">
+            <img
+              src="../images/waterDispenser.jpg"
+              alt="waterDispenser"
+              class="w-full rounded-lg"
+            />
+            <!-- <label for="waterDispenser" class="pb-2 flex gap-2 items-center">
+              <p class="font-openSans text-sm leading-[19.07px]">
+                Water Dispenser
+              </p>
+              <input
+                type="number"
+                name="waterDispenser"
+                id="waterDispenser"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="waterDispenser" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Bottom Loading Water Dispenser
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="waterDispenser"
+                  id="waterDispenser"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-flow-col grid-cols-2 gap-4">
+          <div class="h-80 content-between grid">
+            <img
+              src="../images/hisense.jpg"
+              alt="smartTv"
+              class="w-full rounded-lg"
+            />
+            <!-- <label for="smartTv" class="pb-2 flex items-center">
+              <p class="font-openSans text-sm leading-[19.07px]">Smart TV</p>
+              <input
+                type="number"
+                min="1"
+                name="smartTv"
+                id="smartTv"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="smartTv" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Hisense 65' Smart TV
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="smartTv"
+                  id="smartTv"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+          <div class="grid h-80 content-between">
+            <img
+              src="../images/oven.jpg"
+              alt="oven"
+              class="w-full rounded-lg"
+            />
+            <!-- <label for="oven" class="pb-2 flex gap-2 items-center">
+              <p class="font-openSans text-sm leading-[19.07px]">Oven</p>
+              <input
+                type="number"
+                name="oven"
+                id="oven"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="oven" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Panasonic Oven
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="oven"
+                  id="oven"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+        </div>
+        <div class="grid grid-flow-col grid-cols-2 gap-4">
+          <div class="h-80 content-between grid">
+            <img
+              src="../images/duvet.jpg"
+              alt="duvetSet"
+              class="w-full rounded-lg"
+            />
+            <!-- <label for="duvetSet" class="pb-2 flex items-center">
+              <p class="font-openSans text-sm leading-[19.07px]">Duvet Set</p>
+              <input
+                type="number"
+                min="1"
+                name="duvetSet"
+                id="duvetSet"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="duvetSet" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Duvet Set
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="duvetSet"
+                  id="duvetSet"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+          <div class="grid h-80 content-between">
+            <img
+              src="../images/fan.jpg"
+              alt="standingFan"
+              class="w-full rounded-lg"
+            />
+            <!-- <label for="standingFan" class="pb-2 flex gap-2 items-center">
+              <p class="font-openSans text-sm leading-[19.07px]">
+                Rechargeable Standing Fan
+              </p>
+              <input
+                type="number"
+                name="standingFan"
+                id="standingFan"
+                class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg px-2 py-4"
+              />
+            </label>
+            <button
+              class="bg-[#7D54AE] rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button> -->
+            <label for="standingFan" class="pb-2 grid items-center gap-4">
+              <p class="font-openSans font-semibold text-sm leading-[19.07px]">
+                Rechargeable Standing fan
+              </p>
+              <div class="relative -z-10">
+                <input
+                  type="number"
+                  min="1"
+                  name="standingFan"
+                  id="standingFan"
+                  class="border gift-input border-black/[35%] w-full h-[27px] rounded-lg pl-5 px-2 py-4"
+                />
+                <p class="absolute top-1 left-2 font-semibold">₦</p>
+              </div>
+            </label>
+            <button
+              class="bg-[#7D54AE] text-white rounded-lg w-full h-[42px] leading-[22px] font-semibold"
+              onclick="popUp()"
+            >
+              Purchase
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script>
+  let finalGiftPrice;
+
+  function popUp() {
+    const inputs = document.querySelectorAll(".gift-input");
+    let selectedValue = null;
+    let count = 0;
+
+    inputs.forEach((input) => {
+      if (input.value) {
+        count++;
+        selectedValue = input.value;
+      }
+    });
+
+    if (count === 1) {
+      document.querySelector("#emailForm").classList.remove("hidden");
+      finalGiftPrice = selectedValue;
+    } else {
+      alert("Please select one gift option and enter the gift value.");
+    }
+  }
+
+  function closePopUp() {
+    document.querySelector("#emailForm").classList.add("hidden");
+  }
+
+  const paymentForm = document.getElementById("giftForm");
+  paymentForm.addEventListener("submit", payWithPaystack, false);
+
+  function payWithPaystack() {
+    let handler = PaystackPop.setup({
+      key: "pk_test_64842b69a6a49225b6a350496bdc9d5294ce08b3",
+      email: document.querySelector("#email").value,
+      amount: finalGiftPrice * 100,
+      ref: "" + Math.floor(Math.random() * 1000000000 + 1),
+      onClose: function () {
+        alert("Transaction Cancelled");
+      },
+      callback: function (response) {
+        let message = "Payment complete! Reference: " + response.reference;
+        alert(message);
+        window.location.href = "/pages/successful.html";
+      },
+    });
+    handler.openIframe();
+  }
+</script>

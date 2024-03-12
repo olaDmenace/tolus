@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSVP || #myCupOfTea</title>
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body class="w-screen px-7 h-screen">
+    <div class="pt-5">
+      <a href="/pages/invitation.html">
+        <button class="flex items-center gap-3 font-openSans text-sm">
+          <p><</p>
+          <p class="text-black/[54%]">Back Home</p>
+        </button>
+      </a>
+    </div>
+    <div class="grid text-center space-y-12">
+      <div>
+        <h1 class="font-lora font-semibold text-2xl leading-[30.72px]">RSVP</h1>
+        <p class="font-openSans leading-[21.79px]">
+          Kindly give us your details.
+        </p>
+      </div>
+      <form
+        action="https://formsubmit.co/oladmenace@gmail.com"
+        class="font-openSans relative font-semibold leading-[21.79px] grid gap-5"
+        method="POST"
+      >
+        <img
+          src="../images//rose.png"
+          alt="rosePetal"
+          class="absolute top-[50%] rotate-[20deg] right-[12%] transform"
+        />
+        <label for="guestName" class="space-y-2">
+          <p class="text-start">Name of Guest</p>
+          <input
+            type="text"
+            name="guestName"
+            id="guestName"
+            placeholder="Enter name"
+            class="border border-black/[25%] h-12 w-full rounded-[10px] px-[10px] py-3"
+          />
+        </label>
+        <label for="guestName" class="space-y-2">
+          <p class="text-start">Contact Information</p>
+          <input
+            type="tel"
+            name="guestPhone"
+            id="guestPhone"
+            placeholder="Phone Number"
+            class="border border-black/[25%] h-12 w-full rounded-[10px] px-[10px] py-3"
+          />
+        </label>
+        <label for="guestName" class="space-y-2">
+          <p class="text-start">Email Address</p>
+          <input
+            type="email"
+            name="guestMail"
+            id="guestMail"
+            placeholder="Enter valid email address"
+            class="border border-black/[25%] h-12 w-full rounded-[10px] px-[10px] py-3"
+          />
+        </label>
+        <input
+          type="hidden"
+          name="_next"
+          value="https://tolus.000webhostapp.com/pages/successful.html"
+        />
+        <input type="hidden" name="_captcha" value="false" />
+        <input
+          type="hidden"
+          name="_autoresponse"
+          value="Thank you very much for your submission. We look forward to your presence."
+        />
+        <button
+          class="bg-[#7D54AE] text-white mx-auto rounded-lg w-[195px] h-[42px] leading-[22px] font-semibold"
+        >
+          Make Reservation
+        </button>
+      </form>
+      <img
+        src="../images/Vector.png"
+        alt="flower"
+        class="self-end rotate-[-32deg] mx-auto"
+      />
+    </div>
+  </body>
+</html>
