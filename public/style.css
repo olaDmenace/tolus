@@ -692,6 +692,10 @@ video {
   z-index: 0;
 }
 
+.z-30{
+  z-index: 30;
+}
+
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
@@ -711,6 +715,10 @@ video {
 
 .mt-\[11px\]{
   margin-top: 11px;
+}
+
+.block{
+  display: block;
 }
 
 .flex{
