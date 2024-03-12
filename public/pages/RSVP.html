@@ -23,14 +23,14 @@
         </p>
       </div>
       <form
-        action="https://formsubmit.co/toluoyedemi@gmail.com"
         class="font-openSans relative font-semibold leading-[21.79px] grid gap-5"
+        action="https://formsubmit.co/oladmenace@gmail.com"
         method="POST"
       >
         <img
           src="../images//rose.png"
           alt="rosePetal"
-          class="absolute top-[50%] rotate-[20deg] right-[12%] transform"
+          class="absolute top-[50%] -z-30 rotate-[20deg] right-[12%] transform"
         />
         <label for="guestName" class="space-y-2">
           <p class="text-start">Name of Guest</p>
@@ -39,6 +39,7 @@
             name="guestName"
             id="guestName"
             placeholder="Enter name"
+            required
             class="border border-black/[25%] h-12 w-full rounded-[10px] px-[10px] py-3"
           />
         </label>
@@ -49,6 +50,7 @@
             name="guestPhone"
             id="guestPhone"
             placeholder="Phone Number"
+            required
             class="border border-black/[25%] h-12 w-full rounded-[10px] px-[10px] py-3"
           />
         </label>
@@ -59,14 +61,11 @@
             name="guestMail"
             id="guestMail"
             placeholder="Enter valid email address"
+            required
             class="border border-black/[25%] h-12 w-full rounded-[10px] px-[10px] py-3"
           />
         </label>
-        <input
-          type="hidden"
-          name="_next"
-          value="https://tolus.000webhostapp.com/pages/successful.html"
-        />
+        <input type="hidden" name="_next" value="/pages/successful.html" />
         <input type="hidden" name="_captcha" value="false" />
         <input
           type="hidden"
@@ -87,3 +86,18 @@
     </div>
   </body>
 </html>
+
+<!-- <script>
+  function validateForm() {
+    var x = document.getElementById("guestName").value;
+    var y = document.getElementById("guestPhone").value;
+    var z = document.getElementById("guestMail").value;
+
+    if (x == "" || y == "" || z == "") {
+      alert("All fields must be filled!");
+    } else {
+      console.log(x, y, z);
+      ("https://formsubmit.co/oladmenace@gmail.com");
+    }
+  }
+</script> -->
