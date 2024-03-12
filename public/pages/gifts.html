@@ -553,6 +553,7 @@
   function payWithPaystack() {
     let handler = PaystackPop.setup({
       key: "pk_live_ed7cadc965dfa81e527f337fa4f68086110a6970",
+      // key: "pk_test_64842b69a6a49225b6a350496bdc9d5294ce08b3",
       email: document.querySelector("#email").value,
       amount: finalGiftPrice * 100,
       ref: "" + Math.floor(Math.random() * 1000000000 + 1),
